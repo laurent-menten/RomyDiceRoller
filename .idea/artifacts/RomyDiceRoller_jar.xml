@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="RomyDiceRoller:jar">
+    <output-path>$PROJECT_DIR$</output-path>
+    <root id="archive" name="RomyDiceRoller.jar">
+      <element id="module-output" name="RomyDiceRoller" />
+    </root>
+  </artifact>
+</component>
