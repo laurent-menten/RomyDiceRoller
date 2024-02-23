@@ -7,6 +7,10 @@ import be.romy.dice.DiceType;
 
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class DiceLabel
 	extends JLabel
@@ -20,12 +24,36 @@ public class DiceLabel
 
 	public DiceLabel()
 	{
-		setFont( Dice.getDiceFont().deriveFont( 120f ) );
-		setText( "   " );
+		this( 240f );
 	}
 
+	public DiceLabel( float initalFontSize )
+	{
+		setHorizontalAlignment( JLabel.CENTER );
+
+		addComponentListener( componentAdapter );
+
+		setFont( Dice.getDiceFont().deriveFont( initalFontSize ) );
+	}
+
+	// ------------------------------------------------------------------------
+
+	// Note: ne marche pas avec certain Layout qui ne redimentionnent pas par
+	// défaylt les composants internes... trouver une solution...
+
+	private final ComponentAdapter componentAdapter = new ComponentAdapter()
+	{
+		@Override
+		public void componentResized( ComponentEvent e )
+		{
+			float size = (float) Math.min( getWidth(), getHeight() );
+
+			setFont( Dice.getDiceFont().deriveFont( size ) );
+		}
+	};
+
 	// ========================================================================
-	// = Constructor ==========================================================
+	// = Setter ===============================================================
 	// ========================================================================
 
 	public void setDice( Dice dice )
@@ -38,7 +66,7 @@ public class DiceLabel
 		this.dice = dice;
 		this.dice.addDiceListener( this );
 
-		setText( " "  +  this.dice.getType().getNoFaceUnicode() + " " );
+		setText( Character.toString(  this.dice.getType().getNoFaceUnicode() ) );
 	}
 
 	// ========================================================================
@@ -73,7 +101,7 @@ public class DiceLabel
 			{
 				tempDice.roll();
 				SwingUtilities.invokeLater( () ->
-					DiceLabel.this.setText( " " + tempDice.getFaceUnicode() + " " )
+					DiceLabel.this.setText( Character.toString( tempDice.getFaceUnicode() ) )
 				);
 
 				try
@@ -87,8 +115,26 @@ public class DiceLabel
 			}
 
 			SwingUtilities.invokeLater( () ->
-				setText( " " + type.getFaceUnicode( result ) + " " )
+				setText( Character.toString( type.getFaceUnicode( result ) ) )
 			);
 		}
 	}
+
+//
+    // pour debug, bords et diagonales en rouge.
+
+	@Override
+	public void paint( Graphics g )
+	{
+		int w = getWidth() - 1;
+		int h = getHeight() - 1;
+
+		g.setColor( Color.RED );
+		g.drawRect( 0, 0, w, h );
+		g.drawLine( 0, 0, w, h );
+		g.drawLine( 0, h, w, 0 );
+
+		super.paint( g );
+	}
+//
 }

@@ -33,7 +33,6 @@ public class TestDice
 	public TestDice()
 	{
 		setTitle( frameTitle );
-		setResizable( false );
 
 		setLayout( new BorderLayout() );
 

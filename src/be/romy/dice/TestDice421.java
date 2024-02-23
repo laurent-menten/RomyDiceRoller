@@ -38,7 +38,6 @@ public class TestDice421
 	public TestDice421()
 	{
 		setTitle( frameTitle );
-		setResizable( false );
 
 		setLayout( new BorderLayout() );
 
