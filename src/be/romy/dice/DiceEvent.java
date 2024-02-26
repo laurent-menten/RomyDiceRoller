@@ -5,8 +5,8 @@ import java.util.EventObject;
 public class DiceEvent
 	extends EventObject
 {
-	private int oldFace;
-	private int newFace;
+	private final int oldFace;
+	private final int newFace;
 
 	public DiceEvent( Dice dice, int oldFace, int newFace )
 	{
