@@ -60,7 +60,7 @@ public class Dice
 
 	// ========================================================================
 
-	public void addDiceListener( DiceListener listener )
+	public synchronized void addDiceListener( DiceListener listener )
 	{
 		if( !listeners.contains( listener ) )
 		{
@@ -68,7 +68,7 @@ public class Dice
 		}
 	}
 
-	public void removeDiceListener( DiceListener listener )
+	public synchronized void removeDiceListener( DiceListener listener )
 	{
 		if( listeners.contains( listener ) )
 		{
