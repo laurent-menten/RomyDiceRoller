@@ -81,11 +81,23 @@ public enum DiceType
 			throw new IllegalArgumentException( "Invalid face value " + face + " for a " + this );
 		}
 
-		return facesUnicode[ face-1 ];
+		return facesUnicode[ face - 1 ];
 	}
 
 	public char getHighestFaceUnicode()
 	{
 		return facesUnicode[ faceCount - 1 ];
+	}
+
+	// ========================================================================
+	// = Object interface =====================================================
+	// ========================================================================
+
+	@Override
+	public String toString()
+	{
+		return String.format( "%d face%s",
+			getFaceCount(),
+			getFaceCount() > 1 ? "s" : "" );
 	}
 }

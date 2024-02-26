@@ -39,7 +39,7 @@ public class DiceLabel
 	// ------------------------------------------------------------------------
 
 	// Note: ne marche pas avec certain Layout qui ne redimentionnent pas par
-	// défaylt les composants internes... trouver une solution...
+	// défault les composants internes... trouver une solution...
 
 	private final ComponentAdapter componentAdapter = new ComponentAdapter()
 	{
@@ -120,7 +120,7 @@ public class DiceLabel
 		}
 	}
 
-//
+/*
     // pour debug, bords et diagonales en rouge.
 
 	@Override
@@ -136,5 +136,5 @@ public class DiceLabel
 
 		super.paint( g );
 	}
-//
+*/
 }
