@@ -121,11 +121,11 @@ public class Dice
 		int oldFace = face;
 
 		face = random.nextInt( 1, type.getFaceCount() + 1 ) ;
-		if( face != oldFace )
-		{
+//		if( face != oldFace )
+//		{
 			DiceEvent ev = new DiceEvent( this, oldFace, face );
 			fireDiceEvent( ev );
-		}
+//		}
 
 		return face;
 	}
