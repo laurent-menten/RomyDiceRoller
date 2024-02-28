@@ -7,8 +7,6 @@ import be.romy.dice.DiceType;
 
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -76,7 +74,7 @@ public class DiceLabel
 	@Override
 	public void onDiceRoll( DiceEvent ev )
 	{
-		Thread t = new Thread( new DiceAnim( dice.getType(), dice.getFace() ) );
+		Thread t = new DiceAnim( dice.getType(), dice.getFace() );
 		t.start();
 	}
 

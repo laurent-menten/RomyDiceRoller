@@ -11,6 +11,7 @@ import java.util.List;
 public class Dice
 {
 	private static final Font diceFont;
+
 	static
 	{
 		try( InputStream is = Dice.class.getResourceAsStream( "font/dicefont.ttf" ) )

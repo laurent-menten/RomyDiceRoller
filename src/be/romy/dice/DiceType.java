@@ -78,7 +78,7 @@ public enum DiceType
 	{
 		if( (face < 1) || (face > faceCount) )
 		{
-			throw new IllegalArgumentException( "Invalid face value " + face + " for a " + this );
+			throw new IllegalArgumentException( "Invalid face value " + face + " for a " + this.name() );
 		}
 
 		return facesUnicode[ face - 1 ];
